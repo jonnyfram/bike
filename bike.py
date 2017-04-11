@@ -2,21 +2,15 @@
 
 class Bicycle(object):
     
-    def __init__(self, name):
+    def __init__(self, name, weight, cost):
         self.name = name
-        
-    def weight(self, weight):
         self.weight = weight
-    
-    def cost(self, cost):
         self.cost = cost
         
 class BikeShop(object):
     def __init__(self, shop_name):
         self.shop_name = shop_name
         self.customers = {}
-    
-    def bikestock(self, stock):
         self.stock = stock
     
     def sellbike(self):
@@ -29,38 +23,17 @@ class BikeShop(object):
 
         
 class Customer(object):
-    def __init__(self, name):
+    def __init__(self, name, money):
         self.name = name
-    def wallet(self, amount):
-        self.amount = amount
-    def bikeowner(self):
-        #show if owns bike
-        pass
-
+        self.money = amount
+        
 #create bike models:
-model1 = Bicycle("Trashbike")
-model1.weight(25)
-model1.cost(70)
-
-model2 = Bicycle("Okaybike")
-model2.weight(21)
-model2.cost(250)
-
-model3 = Bicycle("Awesomebike")
-model3.weight(15)
-model3.cost(700)
-
-model4 = Bicycle("Superbike")
-model4.weight(14)
-model4.cost(1000)
-
-model5 = Bicycle("Amazebike")
-model5.weight(13)
-model5.cost(1300)
-
-model6 = Bicycle("SuperAmazeBikePlus")
-model6.weight(10)
-model6.cost(2000)
+model1 = Bicycle("Trashbike", 25, 70)
+model2 = Bicycle("Okaybike", 21, 250)
+model3 = Bicycle("Awesomebike", 15, 700)
+model4 = Bicycle("Superbike", 14, 1000)
+model5 = Bicycle("Amazebike", 13, 1300)
+model6 = Bicycle("SuperAmazeBikePlus", 10, 2000)
 
 #create a bike shop
 bikeshop = BikeShop("Bikey Bike Shop")
@@ -68,12 +41,9 @@ bikeshop = BikeShop("Bikey Bike Shop")
 #add 6 different bike models to it's stock
 
 #create 3 customers:
-customer1 = Customer("Bob")
-customer1.wallet("200")
-customer2 = Customer("Mo")
-customer2.wallet("500")
-customer3 = Customer("Larry")
-customer3.wallet("1000")
+customer1 = Customer("Bob", 200)
+customer2 = Customer("Mo", 500)
+customer3 = Customer("Larry", 1000)
 #add them to a list within bike shop:
 
 #Print the name of each customer 
