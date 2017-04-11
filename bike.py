@@ -36,9 +36,16 @@ model5 = Bicycle("Amazebike", 13, 1300)
 model6 = Bicycle("SuperAmazeBikePlus", 10, 2000)
 
 #create a bike shop
-bikeshop = BikeShop("Bikey Bike Shop", [])
-#TODO
 #add 6 different bike models to it's stock
+bike_model_list = [model1, model2, model3, model4, model5, model6]
+bike_stock = {}
+#create a dictionary of the bikes with a stock number
+for x in bike_model_list:
+    bike_stock[x] = 10
+
+print(bike_stock)
+
+bikeshop = BikeShop("Bikey Bike Shop", bike_stock)
 
 #create 3 customers:
 customer1 = Customer("Bob", 200)
