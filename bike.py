@@ -8,7 +8,7 @@ class Bicycle(object):
         self.cost = cost
         
 class BikeShop(object):
-    def __init__(self, shop_name):
+    def __init__(self, shop_name, stock):
         self.shop_name = shop_name
         self.customers = {}
         self.stock = stock
@@ -22,10 +22,10 @@ class BikeShop(object):
         pass
 
         
-class Customer(object):
+class Customer(object,):
     def __init__(self, name, money):
         self.name = name
-        self.money = amount
+        self.money = money
         
 #create bike models:
 model1 = Bicycle("Trashbike", 25, 70)
@@ -36,7 +36,7 @@ model5 = Bicycle("Amazebike", 13, 1300)
 model6 = Bicycle("SuperAmazeBikePlus", 10, 2000)
 
 #create a bike shop
-bikeshop = BikeShop("Bikey Bike Shop")
+bikeshop = BikeShop("Bikey Bike Shop", [])
 #TODO
 #add 6 different bike models to it's stock
 
@@ -44,10 +44,12 @@ bikeshop = BikeShop("Bikey Bike Shop")
 customer1 = Customer("Bob", 200)
 customer2 = Customer("Mo", 500)
 customer3 = Customer("Larry", 1000)
-#add them to a list within bike shop:
-
-#Print the name of each customer 
-
+#add them to a list
+customer_list = [customer1, customer2, customer3]
+#Print the name of each customer- why do I format it customer_list[customer].name and not customer_list[customer.name]?
+#Does the for loop treat customer_list[customer].name as a single customer from the list?
+for customer in range(len(customer_list)):
+    print(customer_list[customer].name)
 
 #and a list of the bikes offered by the bike shop 
 #that they can afford given their budget. 
