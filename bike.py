@@ -1,5 +1,7 @@
 #model the bicycle industry
 from random import *
+#for seperating print outs during test:
+print("###########################################")
 
 class Bicycle(object):
     
@@ -13,32 +15,45 @@ class BikeShop(object):
         self.name = name
         self.stock = stock
         self.stock_numbers = stock_numbers
-        
-        #markup stock 20% # the below code will not return costs, because what is contain in the list is a STRING. You need to name chec
-        #and access the class to get the cost
-        """for each_bike in range(len(self.stock)):
-            #self.stock[each_bike].cost = self.stock[each_bike].cost*1.2
-            #print(stock.cost)
-            print(self.stock[each_bike].name) #checking if it is getting the string correctly
-            
-            if self.stock[each_bike].name == model1.name"""
+
     def print_stock_numbers(self):
-        #print("working")
         print("The shop has these models for sale:")    
         for bikes in range(len(self.stock)):
             print("                                 "+self.stock[bikes].name)
             print("                                      Number in stock: "+str(self.stock_numbers[bikes]))
                 
-    
-    #def sell_bike(self, customer):
-        #sell bike
-        #
-        #remove bike from stock
-        #
-        #show profit (20% over cost)
-        #pass
-
+    def sell_bike(self, customer):
         
+        markup = 1.2
+        
+        self.customer = customer
+    
+        for bike in range(len(bikeshop.stock)):
+            bike_cost = bikeshop.stock[bike].cost
+        
+            if customer.money >= bike_cost*markup:
+                print(customer.name+" can afford: "+bikeshop.stock[bike].name)
+                can_afford = bikeshop.stock[bike]
+            elif customer.money < bike_cost:
+                #print(customer3.name+" cannot afford: "+bikeshop.stock[bike].name)
+                pass
+            
+        #establish what bike is being purchased using the previous var + the markup   
+        print(customer.name+" decides to buy a "+can_afford.name+", this costs $"+str(can_afford.cost*markup)+".")
+        
+        customer.money -= can_afford.cost
+        #print how much the customer has left in their wallet:
+        print(customer.name+" has $"+str(customer.money)+" left!")
+        
+        #remove that bike from the bike shop's inventory
+        #get the position in list, then in the corresponding position in the stock numbers then remove it then print remaining inventory:
+        #profit made
+        print("Profit made selling "+can_afford.name+" to "+customer3.name+": "+str(can_afford.cost*markup-can_afford.cost))
+        
+        removed_bike = bikeshop.stock.index(can_afford)
+        bikeshop.stock_numbers[removed_bike] -= 1
+        bikeshop.print_stock_numbers()
+ 
 class Customer(object,):
     def __init__(self, name, money):
         self.name = name
@@ -62,7 +77,7 @@ for bikes in bike_stock:
     stock_numbers.append(3)
 
 bikeshop = BikeShop("Bikey Bike Shop", bike_stock, stock_numbers)
-markup = 1.2
+
 #create 3 customers:
 customer1 = Customer("Bob", 200)
 customer2 = Customer("Mo", 500)
@@ -78,33 +93,12 @@ for customer in range(len(customer_list)):
         
 bikeshop.print_stock_numbers()
 
-#buy a bike
-#cycle through stock, get cost of bike, check against customer funds, if his money is >= the cost then add it to a variable
-for bike in range(len(bikeshop.stock)):
-    bike_cost = bikeshop.stock[bike].cost
-    #print(bikeshop.stock[bike].cost)
-    
-    if customer3.money >= bike_cost*markup:
-        print(customer3.name+" can afford: "+bikeshop.stock[bike].name)
-        can_afford = bikeshop.stock[bike]
-    elif customer3.money < bike_cost:
-        #print(customer3.name+" cannot afford: "+bikeshop.stock[bike].name)
-        pass
-#establish what bike is being purchased using the previous var + the markup   
-print(customer3.name+" decides to buy a "+can_afford.name+", this costs $"+str(can_afford.cost*markup)+".")
-
-customer3.money -= can_afford.cost
-#print how much the customer has left in their wallet:
-print(customer3.name+" has $"+str(customer3.money)+" left!")
-
-#remove that bike from the bike shop's inventory
-#get the position in list, then in the corresponding position in the stock numbers then remove it then print remaining inventory:
-removed_bike = bikeshop.stock.index(can_afford)
-bikeshop.stock_numbers[removed_bike] -= 1
-bikeshop.print_stock_numbers()
+#each customer buys a bike:
+for customer in customer_list:
+    bikeshop.sell_bike(customer)
 
 #profit made
-print("Profit made selling "+can_afford.name+" to "+customer3.name+": "+str(can_afford.cost*markup-can_afford.cost))
+#print("Profit made selling "+can_afford.name+" to "+customer3.name+": "+str(can_afford.cost*markup-can_afford.cost))
 
 #sell a bike
 #call sell bike
