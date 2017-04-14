@@ -1,4 +1,5 @@
 #model the bicycle industry
+from random import *
 
 class Bicycle(object):
     
@@ -8,12 +9,12 @@ class Bicycle(object):
         self.cost = cost
         
 class BikeShop(object):
-    def __init__(self, shop_name, stock):
-        self.shop_name = shop_name
-        self.customers = {}
+    def __init__(self, name, stock, stock_numbers):
+        self.name = name
         self.stock = stock
+        self.stock_numbers = stock_numbers
     
-    def sellbike(self):
+    def sell_bike(self):
         #sell bike
         #
         #remove bike from stock
@@ -38,25 +39,30 @@ model6 = Bicycle("SuperAmazeBikePlus", 10, 2000)
 #create a bike shop
 #add 6 different bike models to it's stock
 bike_model_list = [model1, model2, model3, model4, model5, model6]
-bike_stock = {}
-#create a dictionary of the bikes with a stock number
-for x in bike_model_list:
-    bike_stock[x] = 10
+bike_stock = bike_model_list
+stock_numbers = []
+#create initial stock numbers based on models from bike_stock:
+for bikes in bike_stock:
+    stock_numbers.append(3)
 
-print(bike_stock)
-
-bikeshop = BikeShop("Bikey Bike Shop", bike_stock)
+bikeshop = BikeShop("Bikey Bike Shop", bike_stock, stock_numbers)
 
 #create 3 customers:
 customer1 = Customer("Bob", 200)
 customer2 = Customer("Mo", 500)
 customer3 = Customer("Larry", 1000)
-#add them to a list
 customer_list = [customer1, customer2, customer3]
+
 #Print the name of each customer- why do I format it customer_list[customer].name and not customer_list[customer.name]?
 #Does the for loop treat customer_list[customer].name as a single customer from the list?
+print("Three guys walk into "+bikeshop.name+"!")
 for customer in range(len(customer_list)):
     print(customer_list[customer].name)
+
+print("The shop has these models for sale:")    
+for bikes in range(len(bikeshop.stock)):
+    print(bikeshop.stock[bikes].name)
+    print("       Number in stock: "+str(bikeshop.stock_numbers[bikes]))
 
 #and a list of the bikes offered by the bike shop 
 #that they can afford given their budget. 
