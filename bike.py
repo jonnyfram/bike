@@ -47,12 +47,14 @@ class BikeShop(object):
         
         #remove that bike from the bike shop's inventory
         #get the position in list, then in the corresponding position in the stock numbers then remove it then print remaining inventory:
-        #profit made
-        print("Profit made selling "+can_afford.name+" to "+customer3.name+": "+str(can_afford.cost*markup-can_afford.cost))
         
         removed_bike = bikeshop.stock.index(can_afford)
         bikeshop.stock_numbers[removed_bike] -= 1
         bikeshop.print_stock_numbers()
+        
+        #profit made
+        print("Profit made selling "+can_afford.name+" to "+customer.name+": "+str(can_afford.cost*markup-can_afford.cost))
+        
  
 class Customer(object,):
     def __init__(self, name, money):
@@ -84,7 +86,6 @@ customer2 = Customer("Mo", 500)
 customer3 = Customer("Larry", 1000)
 customer_list = [customer1, customer2, customer3]
 
-
 #Print the name of each customer- why do I format it customer_list[customer].name and not customer_list[customer.name]?
 #Does the for loop treat customer_list[customer].name as a single customer from the list?
 print("Three guys walk into "+bikeshop.name+"!")
@@ -96,31 +97,3 @@ bikeshop.print_stock_numbers()
 #each customer buys a bike:
 for customer in customer_list:
     bikeshop.sell_bike(customer)
-
-#profit made
-#print("Profit made selling "+can_afford.name+" to "+customer3.name+": "+str(can_afford.cost*markup-can_afford.cost))
-
-#sell a bike
-#call sell bike
-#check customers funds
-#check bikes cost+margin against funds
-#choose the bike closest to their budget
-#remove cash from their wallet
-#print name of bike purchased
-#print the cost
-#print how much money they have left
-#remove the bike stock from list 
-#print remaining inventory
-#print the profit made by shop
-
-#and a list of the bikes offered by the bike shop 
-#that they can afford given their budget. 
-#Make sure you price the bikes in such a way that each customer can afford at least one.
-
-#Print the initial inventory of the bike shop for each bike it carries.
-
-#Have each of the three customers purchase a bike then print the name of the bike 
-#the customer purchased, the cost, and how much money they have left over in their bicycle fund.
-
-#After each customer has purchased their bike, the script should print out the bicycle shop's remaining inventory 
-#for each bike, and how much profit they have made selling the three bikes.
